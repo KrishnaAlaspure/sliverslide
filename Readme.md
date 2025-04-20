@@ -1,4 +1,4 @@
-### SliverSlide
+# SliverSlide
 
-## Working on something big!
-## Stay Tuned Dev's
+### Working on something big!
+### Stay Tuned Dev's

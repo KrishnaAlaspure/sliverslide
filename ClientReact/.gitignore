@@ -1,0 +1,67 @@
+# Dependencies
+/node_modules/
+
+# Build output
+/build/
+/dist/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# dotenv environment files
+.env
+.env.*.local
+!.env.example
+
+# Misc
+*.pem
+*.crt
+*.key
+
+# Editor folders
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS junk files
+*.swp
+*.bak
+*.tmp
+
+# Test coverage
+/coverage/
+
+# Local development
+/.parcel-cache/
+/.cache/
+/.eslintcache
+
+# Storybook
+.out/
+
+# Binaries
+*.exe
+*.dll
+*.so
+
+# Optional: Ignore public folder cache files
+/public/*.cache
+
+# React Native (if applicable)
+/android/
+/ios/
+
+# Firebase emulators (if used)
+.firebase/
+
+# Netlify or Vercel CLI (optional)
+/.netlify/
+/.vercel/

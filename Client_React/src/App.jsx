@@ -1,10 +1,11 @@
-import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import Login from '../src/assets/components/Login'
-import DashBoard from './assets/components/DashBoard'
-import PageNotFound from './assets/components/PageNotFound'
+import Login from './components/Login'
+import DashBoard from './components/DashBoard'
+import PageNotFound from './components/PageNotFound'
 import { GoogleOAuthProvider } from '@react-oauth/google'
-import { useAppSelector } from './assets/state/hooks/hooks'
+import { useAppSelector } from './state/hooks/hooks'
+import PortfolioMain from './components/Portfolio/PortfolioMain'
+import NavBar from './components/NavBar'
 
 
 
@@ -17,14 +18,16 @@ const App = () => {
         </GoogleOAuthProvider>)
     }
   return (
-    <>
+    <div className='bg-black min-h-screen w-full'>
+    {isLoggedIn && <NavBar />}
       <Routes>
         <Route path='/' element={<Navigate to={'/login'}/>}/>
         <Route path='/login'  element={<GoogleAuthProviderWrapper/>}/>
         <Route path='/dashboard' element={isLoggedIn ? <DashBoard /> : <Navigate to="/login" />}/>
+        <Route path='/portfolio' element={isLoggedIn ? <PortfolioMain /> : <Navigate to="/login" />}/>
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>
-    </>
+    </div>
   )
 }
 

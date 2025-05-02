@@ -1,11 +1,11 @@
 import React from 'react'
 
-const DashBoard = () => {
+const Login = () => {
   return (
     <div>
-      
+Hello
     </div>
   )
 }
 
-export default DashBoard
+export default Login

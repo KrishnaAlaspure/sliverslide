@@ -41,7 +41,7 @@ function ContactMe() {
         <p className='text-sm text-center md:text-lg text-neutral-400 m-2'>Please fill out the form below to discuss any work opportunities</p>
       </div>
       <div className='flex flex-col justify-around items-center'>
-      <form ref={form} onSubmit={sendEmail} className=' flex flex-col md:w-1/2 justify-around items-center rounded-lg p-2   ' >
+      <form ref={form} onSubmit={sendEmail} className=' flex flex-col md:w-1/2 justify-around items-center rounded-lg p-2 mb-10  ' >
       
       <input type="text" name="from_name" value={formValues.fullName} onChange={(e) =>
             setFormValues({ ...formValues, fullName: e.target.value })} className='text-md text-black w-full rounded-lg m-4 p-2' placeholder="Your Name"/>

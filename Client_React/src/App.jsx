@@ -6,6 +6,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import { useAppSelector } from './state/hooks/hooks'
 import PortfolioMain from './components/Portfolio/PortfolioMain'
 import NavBar from './components/NavBar'
+import Chatbot from './components/ChatBot/Chatbot'
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
         <Route path='/login'  element={<GoogleAuthProviderWrapper/>}/>
         <Route path='/dashboard' element={isLoggedIn ? <DashBoard /> : <Navigate to="/login" />}/>
         <Route path='/portfolio' element={isLoggedIn ? <PortfolioMain /> : <Navigate to="/login" />}/>
+        <Route path='/chatbot' element={isLoggedIn ? <Chatbot /> : <Navigate to="/login" />}/>
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>
     </div>

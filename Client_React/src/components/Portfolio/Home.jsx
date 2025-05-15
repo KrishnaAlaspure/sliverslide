@@ -1,6 +1,6 @@
 import { Linkedin,Github } from 'lucide-react';
 import { Instagram } from 'lucide-react';
-import KrishnaAlaspure from '../../assets/PDF/KrishnaAlaspure2024.pdf'
+import KrishnaAlaspure from '../../assets/PDF/KrishnaAlaspure.pdf'
 import avatar from '../../assets/img/Profile1.jpg'
 
 const Home = () => {

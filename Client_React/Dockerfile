@@ -16,6 +16,8 @@ COPY . .
 # Build the React application
 RUN npm run build && ls -la /app
 
+RUN pwd
+RUN   cd.. && ls -ls
 # Use an official Nginx image to serve the built application
 FROM nginx:alpine
 
@@ -26,4 +28,4 @@ COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 
 # Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]  

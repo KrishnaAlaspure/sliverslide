@@ -31,23 +31,23 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:latest ./Client_React
           docker push ${{ secrets.DOCKER_USERNAME }}/frontend:latest
   deploy-backend:
-    needs: build
+    needs: build-and-push
     runs-on: self-hosted 
     steps:
       - name: Pull image from docker hub
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/backend:latest 
       - name: Delete old container
-        run: docker rm -f nodejs-app-container  
+        run: docker rm -f nodejs-app-container  || true
       - name: Run Docker Container
-        run: docker run -d -p 4000:4000 --name nodejs-app-container integrationninjas/nodejs-app
+        run: docker run -d -p 4000:4000 --name nodejs-app-container ${{ secrets.DOCKER_USERNAME }}/backend:latest
 
   deploy-reactjs:
-    needs: build
+    needs: build-and-push
     runs-on: [self-hosted, Client_React-runner]
     steps:
       - name: Pull image from docker hub
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/frontend:latest
       - name: Delete old container
-        run: docker rm -f reactjs-app-container
+        run: docker rm -f reactjs-app-container || true
       - name: Run Docker Container
-        run: docker run -d -p 3000:80 --name reactjs-app-container integrationninjas/reactjs-app
+        run: docker run -d -p 3000:80 --name reactjs-app-container ${{ secrets.DOCKER_USERNAME }}/frontend:latest

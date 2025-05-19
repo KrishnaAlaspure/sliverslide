@@ -29,3 +29,5 @@ app.listen(PORT,()=>{
     console.log(`Server is Running on PORT : ${PORT}`);
     
 })
+
+module.exports = app

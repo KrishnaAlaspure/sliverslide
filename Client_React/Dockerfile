@@ -14,16 +14,16 @@ RUN npm install
 COPY . .
 
 # Build the React application
-RUN npm run build && ls -la /app
+RUN npm run build && ls -la /app && pwd
 
 # Use an official Nginx image to serve the built application
 FROM nginx:alpine
 
 # Copy the built React application to the Nginx HTML directory
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
 # Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]  

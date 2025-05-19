@@ -30,7 +30,7 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:latest ./Client_React
           docker push ${{ secrets.DOCKER_USERNAME }}/frontend:latest
-  deploy:
+  deploy-backend:
     needs: build
     runs-on: self-hosted 
     steps:
@@ -41,7 +41,7 @@ jobs:
       - name: Run Docker Container
         run: docker run -d -p 4000:4000 --name nodejs-app-container integrationninjas/nodejs-app
 
-  deploy:
+  deploy-reactjs:
     needs: build
     runs-on: [self-hosted, Client_React-runner]
     steps:

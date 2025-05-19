@@ -20,18 +20,14 @@ app.use(
 )
 
 app.get('/', (req,res)=>{
-    return res.status(200).json({
-        message : "Hello  from server"
-})
+    res.send('Hello')
 })
 
 app.use('/auth',authRouter)
 
-// Export the app for testing
-if (process.env.NODE_ENV !== 'test') {
-    app.listen(PORT, () => {
-      console.log(`Server is Running on PORT : ${PORT}`);
-    });
-  }
+app.listen(PORT,()=>{
+    console.log(`Server is Running on PORT : ${PORT}`);
+    
+})
 
 module.exports = app

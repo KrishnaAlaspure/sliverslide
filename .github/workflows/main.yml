@@ -32,7 +32,7 @@ jobs:
 
   deploy-backend:
     needs: build-and-push
-    runs-on: self-hosted
+    runs-on: [self-hosted,backend-node]
     steps:
       - name: Debug Docker Images
         run: docker images
@@ -51,7 +51,7 @@ jobs:
 
   deploy-reactjs:
     needs: build-and-push
-    runs-on: [self-hosted, Client_React-runner]
+    runs-on: [self-hosted, frontend-reactjs]
     steps:
       - name: Debug Docker Images
         run: docker images

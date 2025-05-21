@@ -35,35 +35,35 @@ jobs:
     runs-on: [self-hosted,backend-node]
     steps:
       - name: Debug Docker Images
-        run: docker images
+        run: sudo docker images
 
       - name: Debug Running Containers
-        run: docker ps -a
+        run: sudo docker ps -a
 
       - name: Pull image from docker hub
-        run: docker pull ${{ secrets.DOCKER_USERNAME }}/backend:latest
+        run: sudo docker pull ${{ secrets.DOCKER_USERNAME }}/backend:latest
 
       - name: Delete old container
-        run: docker rm -f nodejs-app-container || true
+        run: sudo docker rm -f nodejs-app-container || true
 
       - name: Run Docker Container
-        run: docker run -d -p 4000:4000 --name nodejs-app-container ${{ secrets.DOCKER_USERNAME }}/backend:latest
+        run: sudo docker run -d -p 4000:4000 --name nodejs-app-container ${{ secrets.DOCKER_USERNAME }}/backend:latest
 
   deploy-reactjs:
     needs: build-and-push
     runs-on: [self-hosted, frontend-reactjs]
     steps:
       - name: Debug Docker Images
-        run: docker images
+        run: sudo docker images
 
       - name: Debug Running Containers
-        run: docker ps -a
+        run: sudo docker ps -a
 
       - name: Pull image from docker hub
-        run: docker pull ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+        run: sudo docker pull ${{ secrets.DOCKER_USERNAME }}/frontend:latest
 
       - name: Delete old container
-        run: docker rm -f reactjs-app-container || true
+        run: sudo docker rm -f reactjs-app-container || true
 
       - name: Run Docker Container
-        run: docker run -d -p 3000:80 --name reactjs-app-container ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+        run: sudo docker run -d -p 3000:80 --name reactjs-app-container ${{ secrets.DOCKER_USERNAME }}/frontend:latest

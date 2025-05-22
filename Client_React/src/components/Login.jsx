@@ -4,6 +4,8 @@ import { googleAuth } from '../services/api';
 import { useAppDispatch } from '../state/hooks/hooks';
 import { setLoggedIn } from '../state/slices/AuthStateSlice';
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
+
 const Login = () => {
 const dispatch = useAppDispatch();
 const navigate = useNavigate();
@@ -15,6 +17,7 @@ const navigate = useNavigate();
               const result = await googleAuth(authResult['code'])
               console.log(result);
               dispatch(setLoggedIn(true));
+              toast.success("Login Successfull");
               navigate('/dashboard');
               
             }

@@ -9,7 +9,7 @@ exports.googleLogin = async(req,res) =>{
     try {
         console.log("inside try");
         const googleResponse = await oauth2Client.getToken(code);
-        console.log("googleResponse  ",googleResponse);
+        console.log("googleResponse  ",googleResponse.tokens);
         oauth2Client.setCredentials(googleResponse.tokens);
 
         // Extract the Google access token
@@ -19,7 +19,7 @@ exports.googleLogin = async(req,res) =>{
             `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googleResponse.tokens.access_token}`
         )
         const {email,name,picture} = userResponse.data;
-        console.log(userResponse);
+        console.log("userresponse =====",userResponse.data);
         let User = await UserModel.findOne({email});
         if(!User){
             User = await UserModel.create({
@@ -27,7 +27,7 @@ exports.googleLogin = async(req,res) =>{
             })
         }
 
-
+        console.log()
         return res.status(200).json({
             message : "Success",
             googleAccessToken,

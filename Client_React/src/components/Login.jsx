@@ -14,8 +14,8 @@ const navigate = useNavigate();
       try {
         console.log("result from Google",authResult['code']);
         if(authResult['code']){
-          const result = await googleAuth(authResult['code'])
-          console.log(result.message);
+          const result = await googleAuth(authResult['code']);
+          console.log(result.data);
           dispatch(setLoggedIn(true));
           toast.info("Login Successfull",{
             position: "center",

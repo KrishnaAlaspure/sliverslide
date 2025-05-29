@@ -17,6 +17,7 @@ const navigate = useNavigate();
           const result = await googleAuth(authResult['code']);
           console.log(result.data);
           dispatch(setLoggedIn(true));
+          sessionStorage.setItem('accessToken',JSON.stringify(result.data.googleAccessToken));
           toast.info("Login Successfull",{
             position: "center",
             autoClose: 2000,});

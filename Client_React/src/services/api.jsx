@@ -5,5 +5,6 @@ const api = axios.create({
 })
 
 export const googleAuth = (code) =>{
-    api.get(`/google?code=${code}`)
+    const res = api.get(`/google?code=${code}`)
+    return  res;
 }
